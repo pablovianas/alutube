@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <StyledHeader>
             <section className="user-info">
-                <img src={`https://github.com/${config.github}.png`} />
+                <img src={`https://github.com/${config.github}.png`} alt="Github profile" />
                 <div>
                     <h2>
                         {config.name}
