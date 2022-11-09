@@ -6,8 +6,7 @@ export const StyledHeader = styled.div`
         height: 80px;
         border-radius: 50%;
     }
-    .user-info {
-        margin-top: 50px;
+    .user-info {    
         display: flex;
         align-items: center;
         width: 100%;
@@ -15,3 +14,10 @@ export const StyledHeader = styled.div`
         gap: 16px;
     }
 `;
+
+export const StyledBanner = styled.div`
+    background-image: url(${({ bg }) => bg});
+    background-size: 100% 150%;
+    background-repeat: no-repeat;
+    height: 300px;
+`

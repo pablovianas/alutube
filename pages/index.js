@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import React, {useState} from 'react';
 import config from '../config.json'
 import { CSSReset } from '../src/styles/CSSReset'
-import { Menu } from '../src/components/Menu/Menu';
-import { Header } from '../src/components/Header/Header';
-import { Timeline } from '../src/components/Timeline/Timeline';
+import { Menu } from '../src/components/Menu';
+import { Header } from '../src/components/Header';
+import { Timeline } from '../src/components/Timeline';
 
 
 function HomePage() {
+  const [valorDoFiltro, setValorDoFiltro] = useState("");
 
   return (
     <>
@@ -16,9 +17,9 @@ function HomePage() {
         flexDirection: "column",
         flex: 1,
       }}>
-        <Menu />
+        <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
         <Header />
-        <Timeline playlists={config.playlists}>
+        <Timeline searchValue={valorDoFiltro} playlists={config.playlists} favorites={config.favorites}>
           Conteúdo
         </Timeline>
       </div>

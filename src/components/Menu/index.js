@@ -1,11 +1,14 @@
+import Search from "./components";
 import { StyledMenu } from "./Menu.style";
 
-export const Menu = () => {
+
+export const Menu = ({ valorDoFiltro, setValorDoFiltro }) => {
     return (
         <StyledMenu>
             <div>
                 <Logo />
             </div>
+            <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
         </StyledMenu>
     );
 }

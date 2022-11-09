@@ -18,11 +18,11 @@ export const StyledMenu = styled.header`
         max-width: 80px;
 
         @media (min-width: 600px) {
-        max-width: 127px;
+            max-width: 127px;
         }
 
         .text {
-        fill: ${({ theme }) => theme.textColorBase || "#222222"};
+            fill: ${({ theme }) => theme.textColorBase || "#222222"};
         }
     }
 `;
