@@ -11,6 +11,7 @@ import {
     ProfileImage,
     StyledSkeleton
 } from "./Timeline.style"
+import React from "react";
 
 
 export const Timeline = ({ searchValue, videoInformations, ...props }) => {
@@ -29,15 +30,15 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
 
 
     return (
-        <StyledTimeline>
-            {playlistNames.map((playlistName, index) => {
+        <>
+            {playlistNames.map((playlistName) => {
                 const videos = props.playlists[playlistName];
                 return (
-                    <>
+                    <StyledTimeline key={playlistName}>
                         {!isLoading ? 
-                            <StyledTimelineSection key={playlistName}>
+                            <StyledTimelineSection >
                                 <StyledThumbnailTitle>{playlistName}</StyledThumbnailTitle>
-                                <div key={index}>
+                                <div>
                                     {videos.filter((video) => {
                                         const titleNormalized = video.title.toLowerCase();
                                         const searchValueNormalized = searchValue.toLowerCase();
@@ -58,15 +59,15 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                             <StyledSkeleton height={'230px'} style={{zIndex: '-1'}}>
                                 <Skeleton width={'75px'} height={'30px'}/>
                                 <div>
-                                    {videos.map(() => {
+                                    {videos.map((video) => {
                                         return (
-                                            <Skeleton width={'200px'} height={'200px'} duration={10} style={{zIndex: '1000'}}/>
+                                            <Skeleton key={video.url} width={'200px'} height={'200px'} duration={10} style={{zIndex: '1000'}}/>
                                         )
                                     })}
                                 </div>
                             </StyledSkeleton>
                         }
-                    </>
+                    </StyledTimeline>
                 )
             })}
             <>
@@ -75,14 +76,12 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                             <StyledThumbnailTitle>Front-end Inspirations</StyledThumbnailTitle>
                             <div>
                                 {
-                                    favoriteChannels.map((channel, index) => {
+                                    favoriteChannels.map((channel) => {
                                         return (
-                                            <>
-                                                <a key={index} href={channel.url}>
-                                                    <ProfileImage src={channel.image} alt="Profile picture" />
-                                                    <span>{channel.name}</span>
-                                                </a>
-                                            </>
+                                            <a key={channel.url} href={channel.url}>
+                                                <ProfileImage src={channel.image} alt="Profile picture" />
+                                                <span>{channel.name}</span>
+                                            </a>       
                                         )
                                     })
                                 }
@@ -92,16 +91,16 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                         <StyledSkeleton height={'230px'} style={{ zIndex: '-1' }}>
                             <Skeleton width={'75px'} height={'30px'} />
                             <div>
-                            {favoriteChannels.map(() => {
+                            {favoriteChannels.map((channel) => {
                                     return (
-                                        <Skeleton width={'200px'} height={'200px'} duration={10} style={{ zIndex: '1000' }} />
+                                        <Skeleton key={channel.name} width={'200px'} height={'200px'} duration={10} style={{ zIndex: '1000' }} />
                                     )
                                 })}
                             </div>
                         </StyledSkeleton>
                 }
             </>
-        </StyledTimeline>
+        </>
     )
 }
 
