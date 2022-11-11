@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { ColorModeContext } from "../src/contexts/ColorMode";
 import { VideoContext } from "../src/contexts/VideoProvider";
 import { Header } from "../src/components/Header";
+import { DarkModeSwitch } from "../src/components/Menu/components/Switcher";
 import styled from "styled-components";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -30,13 +31,13 @@ export default function Video() {
             {!isLoading && Object.keys(openedVideo).length > 0 ?
                 <>
                     <Header> 
-                        <button onClick={() => contexto.toggleMode()}>
-                            Change mode
-                        </button>
+                        
                     </Header>
-                    
+                    <SwitcherStyled>
+                        <DarkModeSwitch />
+                    </SwitcherStyled>
                     <StyledIFrame>
-                        <h2>{openedVideo.title || <Skeleton />}</h2>
+                        <h4>{openedVideo.title}</h4>
                         <iframe 
                             width={'560px'} 
                             height={'315px'}
@@ -55,7 +56,10 @@ export default function Video() {
                             <div>
                                 <Skeleton width={'230px'} count={2} />
                             </div>
-                        </UserInfo> 
+                        </UserInfo>
+                        <SwitcherStyled>
+                            <Skeleton width={'50px'} height={'25px'} />
+                        </SwitcherStyled> 
                         <StyledIFrame>  
                         <Skeleton width={'50%'} />
                             <Skeleton width={'560px'} height={'315px'} />
@@ -83,4 +87,9 @@ export const UserInfo = styled.section`
     padding: 16px 32px;
     gap: 16px;
     
+`
+export const SwitcherStyled = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
 `
