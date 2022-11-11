@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.div`
+    background-color: ${({ theme }) => theme.backgroundLevel1}; 
     img {
         width: 80px;
         height: 80px;
@@ -17,7 +18,7 @@ export const StyledHeader = styled.div`
 
 export const StyledBanner = styled.div`
     background-image: url(${({ bg }) => bg});
-    background-size: 100% 150%;
+    background-size: 100% 130%;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 250px;
 `

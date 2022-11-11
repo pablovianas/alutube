@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export const StyledTimeline = styled.div`
     flex: 1;
@@ -55,4 +57,14 @@ export const ProfileImage = styled.img`
     width: 80px;
     height: 80px;
     border-radius: 50%;
+`
+
+export const StyledSkeleton = styled(Skeleton)`
+    width: calc(100vw - 16px * 4);
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(200px,1fr);
+    overflow-x: scroll;
 `

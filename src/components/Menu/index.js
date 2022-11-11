@@ -1,15 +1,41 @@
-import Search from "./components";
+import { useEffect, useState } from "react"
+import { DarkModeSwitch } from "./components/Switcher";
 import { StyledMenu } from "./Menu.style";
+import Search  from "./components/Search";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 export const Menu = ({ valorDoFiltro, setValorDoFiltro }) => {
+
+    const [isLoading, setLoading] = useState(true)
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+    }, [])
+
     return (
-        <StyledMenu>
-            <div>
-                <Logo />
-            </div>
-            <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
-        </StyledMenu>
+        <>
+            {!isLoading ?
+                        <StyledMenu>
+                            <div>
+                                <Logo />
+                            </div>
+                            <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
+                            <DarkModeSwitch/>
+                        </StyledMenu>
+                        :   
+                        <Skeleton width={'100%'} height={'56px'}>
+                            <div>
+                                <Skeleton width={'127px'} height={'24.32px'} /> 
+                            </div>
+                            <Skeleton width={'425px'} height={'42.5px'} />
+                            <Skeleton width={'50px'} height={'25px'} />
+                        </Skeleton>
+                        
+            }
+        </>
     );
 }
 
