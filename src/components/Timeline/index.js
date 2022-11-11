@@ -70,7 +70,7 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                     </StyledTimeline>
                 )
             })}
-            <>
+            <StyledTimeline>
                 {!isLoading ? 
                         <StyledTimelineSection>
                             <StyledThumbnailTitle>Front-end Inspirations</StyledThumbnailTitle>
@@ -99,7 +99,7 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                             </div>
                         </StyledSkeleton>
                 }
-            </>
+            </StyledTimeline>
         </>
     )
 }
