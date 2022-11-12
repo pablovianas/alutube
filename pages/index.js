@@ -3,6 +3,7 @@ import config from '../config.json'
 import { Menu } from '../src/components/Menu';
 import { Header } from '../src/components/Header';
 import { Timeline } from '../src/components/Timeline';
+import { RegisterVideo } from '../src/components/RegisterVideo';
 
 
 function HomePage() {
@@ -20,6 +21,7 @@ function HomePage() {
         <Timeline searchValue={valorDoFiltro} playlists={config.playlists} favorites={config.favorites}>
           Conteúdo
         </Timeline>
+        <RegisterVideo />
       </div>
     </>
   );

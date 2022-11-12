@@ -54,15 +54,15 @@ export default function Video() {
                         <UserInfo >
                             <Skeleton width={'80px'} height={'80px'} borderRadius={'50%'} />
                             <div>
-                                <Skeleton width={'230px'} count={2} />
+                                <Skeleton width={'215px'} count={2} />
                             </div>
                         </UserInfo>
                         <SwitcherStyled>
                             <Skeleton width={'50px'} height={'25px'} />
                         </SwitcherStyled> 
                         <StyledIFrame>  
-                        <Skeleton width={'50%'} />
-                            <Skeleton width={'560px'} height={'315px'} />
+                            <Skeleton width={'50%'} />
+                            <Skeleton className="video" width={'560px'} height={'315px'} />
                         </StyledIFrame>    
                     </>
             } 
@@ -78,6 +78,18 @@ export const StyledIFrame = styled.div`
     align-items: center;
     gap: 20px;
     margin-top: 10px;
+    margin-bottom: 25px;
+
+    @media (max-width: 425px){
+        h4{
+            width: 300px;
+            text-align: center;
+        }
+        iframe{
+            width: 300px;
+            height: 260px;
+        }
+    }
 `
 
 export const UserInfo = styled.section`
@@ -92,4 +104,7 @@ export const SwitcherStyled = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
+    @media (max-width:425px){
+        margin-right: 10px;
+    }
 `

@@ -10,7 +10,7 @@ import {
     StyledTimelineSection,
     ProfileImage,
     StyledSkeleton
-} from "./Timeline.style"
+} from "./styles"
 import React from "react";
 
 
@@ -35,43 +35,45 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                 const videos = props.playlists[playlistName];
                 return (
                     <StyledTimeline key={playlistName}>
-                        {!isLoading ? 
-                            <StyledTimelineSection >
-                                <StyledThumbnailTitle>{playlistName}</StyledThumbnailTitle>
-                                <div>
-                                    {videos.filter((video) => {
-                                        const titleNormalized = video.title.toLowerCase();
-                                        const searchValueNormalized = searchValue.toLowerCase();
-                                        return titleNormalized.includes(searchValueNormalized)
-                                    }).map((video) => {
-                                        return (
-                                            <Link key={video.url} href={{ pathname: '/video', }} onClick={() => context.getVideo(video)} >
-                                                <StyledThumbnailImage src={video.thumb} alt="Video thumbnail" />
-                                                <span>
-                                                    {video.title}
-                                                </span>
-                                            </Link>
-                                        )
-                                    })}
-                                </div>
-                            </StyledTimelineSection>
-                            :
-                            <StyledSkeleton height={'230px'} style={{zIndex: '-1'}}>
-                                <Skeleton width={'75px'} height={'30px'}/>
-                                <div>
-                                    {videos.map((video) => {
-                                        return (
-                                            <Skeleton key={video.url} width={'200px'} height={'200px'} duration={10} style={{zIndex: '1000'}}/>
-                                        )
-                                    })}
-                                </div>
-                            </StyledSkeleton>
+                        {!isLoading 
+                            ?(
+                                <StyledTimelineSection >
+                                    <StyledThumbnailTitle>{playlistName}</StyledThumbnailTitle>
+                                    <div>
+                                        {videos.filter((video) => {
+                                            const titleNormalized = video.title.toLowerCase();
+                                            const searchValueNormalized = searchValue.toLowerCase();
+                                            return titleNormalized.includes(searchValueNormalized)
+                                        }).map((video) => {
+                                            return (
+                                                <Link key={video.url} href={{ pathname: '/video', }} onClick={() => context.getVideo(video)} >
+                                                    <StyledThumbnailImage src={video.thumb} alt="Video thumbnail" />
+                                                    <span>
+                                                        {video.title}
+                                                    </span>
+                                                </Link>
+                                            )
+                                        })}
+                                    </div>
+                                </StyledTimelineSection>
+                            ):
+                                <StyledSkeleton height={'230px'} style={{zIndex: '-1'}}>
+                                    <Skeleton width={'75px'} height={'30px'}/>
+                                    <div>
+                                        {videos.map((video) => {
+                                            return (
+                                                <Skeleton key={video.url} width={'200px'} height={'200px'} duration={10} style={{zIndex: '1000'}}/>
+                                            )
+                                        })}
+                                    </div>
+                                </StyledSkeleton>
                         }
                     </StyledTimeline>
                 )
             })}
             <StyledTimeline>
-                {!isLoading ? 
+                {!isLoading 
+                    ?( 
                         <StyledTimelineSection>
                             <StyledThumbnailTitle>Front-end Inspirations</StyledThumbnailTitle>
                             <div>
@@ -87,7 +89,7 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                                 }
                             </div>
                         </StyledTimelineSection>
-                        :
+                    ):
                         <StyledSkeleton height={'230px'} style={{ zIndex: '-1' }}>
                             <Skeleton width={'75px'} height={'30px'} />
                             <div>

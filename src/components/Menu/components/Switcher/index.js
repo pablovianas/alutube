@@ -1,4 +1,4 @@
-import { StyledSwitch } from "./Switcher.style"
+import { StyledSwitch } from "./styles"
 import { ColorModeContext } from "../../../../contexts/ColorMode"
 import { useContext } from "react"
 
