@@ -75,7 +75,7 @@ export const Timeline = ({ searchValue, videoInformations, ...props }) => {
                 {!isLoading 
                     ?( 
                         <StyledTimelineSection>
-                            <StyledThumbnailTitle>Front-end Inspirations</StyledThumbnailTitle>
+                            <StyledThumbnailTitle>Inspirations</StyledThumbnailTitle>
                             <div>
                                 {
                                     favoriteChannels.map((channel) => {

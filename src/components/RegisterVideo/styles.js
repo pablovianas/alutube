@@ -68,4 +68,8 @@ export const StyledRegisterVideo = styled.div`
     color: ${({ theme }) => theme.textColorBase};
     background-color: ${({ theme }) => theme.backgroundBase};
   }
+  strong{
+    margin-top: 15px;
+    text-align: center;
+  }
 `;
